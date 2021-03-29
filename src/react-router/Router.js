@@ -8,7 +8,7 @@ class Router extends React.Component {
     }
     /* 监听历时对象中的路径变化，当路径变化后执行回调函数,参数就是最新的路径信息 */
     /* 返回一个取消监听的函数，调用它可以取消监听 */
-    this.unlisten = props.history.listen(history => {
+    this.unlisten = props.history.listen(location => {
       this.setState({ location })
     });
   }
@@ -16,7 +16,7 @@ class Router extends React.Component {
     this.unlisten();
   }
   render() {
-    let value = {
+    const value = {
       location: this.state.location,//用来传递给Route用来判断路由是否匹配
       history: this.props.history//用来让组件跳转路径
     }
