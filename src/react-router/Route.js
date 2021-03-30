@@ -4,11 +4,9 @@ import RouterContext from './RouterContext';
 /* 
 获取到context中的值
 */
-
 class Route extends React.Component {
   static contextType = RouterContext;
   render() {
-    debugger;
     const { history, location } = this.context;
     const { path, component: RouteComponent } = this.props;
     const match = location.pathname === path;
