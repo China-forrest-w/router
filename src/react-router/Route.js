@@ -8,6 +8,7 @@ import RouterContext from './RouterContext';
 class Route extends React.Component {
   static contextType = RouterContext;
   render() {
+    debugger;
     const { history, location } = this.context;
     const { path, component: RouteComponent } = this.props;
     const match = location.pathname === path;
