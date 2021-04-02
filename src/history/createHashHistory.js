@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-29 18:13:39
- * @LastEditTime: 2021-03-31 22:02:43
+ * @LastEditTime: 2021-04-02 16:53:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/src/history/createHashHistory.js
@@ -32,6 +32,8 @@ function createHashHistory() {
       //不要用push的形式，应该用指针，因为回退要覆盖上一步 page1 page2 page3 page4
       // historyStack.push(history.location);
       historyStack[++historyIndex] = history.location;
+    } else if (action === 'REPLACE') {
+      historyStack[historyIndex] = history.location;
     }
     listeners.forEach(listener => listener(history.location));
   })
@@ -45,6 +47,16 @@ function createHashHistory() {
       state = nextState;
     }
     // 给hash赋值时不加#，取hash值时有#
+    window.location.hash = pathname;
+  }
+  function replace(pathname, nextState) {
+    action = 'REPLACE';
+    if (typeof pathname === 'object') {
+      state = pathname.state;
+      pathname = pathname.pathname;
+    } else {
+      state = nextState;
+    }
     window.location.hash = pathname;
   }
   /* go通过历史栈实现 */
@@ -72,6 +84,7 @@ function createHashHistory() {
     goBack,
     goForward,
     push,
+    replace,
     listen
   }
   action = 'PUSH';
