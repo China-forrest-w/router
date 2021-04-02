@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, HashRouter } from './react-router-dom';
+import { Route, HashRouter, BrowserRouter } from './react-router-dom';
 import Home from './components/Home';
 import Profile from './components/Profile';
 import User from './components/User';
 
 ReactDOM.render(
-  <HashRouter>
+  <BrowserRouter>
     <Route exact path="/" component={Home} />
     <Route path="/user" component={User} />
     <Route path="/profile" component={Profile} />
-  </HashRouter>,
+  </BrowserRouter>,
   document.getElementById('root')
 );
 /* 

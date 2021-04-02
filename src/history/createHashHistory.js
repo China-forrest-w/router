@@ -25,7 +25,6 @@ function createHashHistory() {
   }
 
   window.addEventListener('hashchange', () => {
-    console.log('111');
     let pathname = window.location.hash.slice(1);
     /* 把新的action和pathname赋值给history.action/history.location */
     Object.assign(history, { action, location: { pathname, state } })
