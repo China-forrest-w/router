@@ -1,15 +1,28 @@
 
+
+import pathToRegexp from 'path-to-regexp';
+
+const cache = {};
+
+function compilePath(path, options = {}) {
+    let cacheKey = path + JSON.stringify(options);
+    if (cache[cacheKey]) return cache[cacheKey];
+
+    const keys = [];//处理路径参数
+    const regexp = pathToRegexp(path, keys, options);
+    let result = { keys, regexp };
+    cache[cacheKey] = result;
+    
+    return { keys, regexp };
+}
 /* 
 pathname: 浏览器当前真实的路径名
 options: Route组件的props  path Component exact
+path Route的路径
+exact 是否精确匹配
+strict 是否严格匹配
+sensitive 是否大小写敏感
 */
-import pathToRegexp from 'path-to-regexp';
-function compilePath(path, options = {}) {
-    const keys = [];//处理路径参数
-    const regexp = pathToRegexp(path, keys, options);
-    return { keys, regexp };
-}
-
 function matchPath(pathname, options = {}) {
     let { path = '/', exact = false, strict = false, sentive = false } = options;
     let { keys, regexp } = compilePath(path, { end: exact, strict, sentive });
