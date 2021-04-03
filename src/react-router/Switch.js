@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-02 17:07:48
- * @LastEditTime: 2021-04-03 15:31:23
+ * @LastEditTime: 2021-04-03 16:06:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/src/react-router-dom/Switch.js
@@ -15,7 +15,6 @@ class Switch extends Component {
   render() {
     const { location } = this.context;
     let element, match;
-    debugger;
     /* this.props.children可以是undefined、对象、数组、字符串、数组 */
     React.Children.forEach(this.props.children, child => {
       if (!match && React.isValidElement(child)) {//没有任何一个元素匹配上

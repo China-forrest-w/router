@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-28 16:39:40
- * @LastEditTime: 2021-04-02 23:24:47
+ * @LastEditTime: 2021-04-03 16:06:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/src/react-router/index.js
@@ -11,3 +11,4 @@ export { default as Route } from './Route';
 export { default as matchPath } from './matchPath';
 export { default as _RouterContext } from './RouterContext'
 export { default as Switch } from './Switch';
+export { default as Redirect } from './Redirect';
