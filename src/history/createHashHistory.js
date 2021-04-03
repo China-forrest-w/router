@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-29 18:13:39
- * @LastEditTime: 2021-04-02 16:53:58
+ * @LastEditTime: 2021-04-03 15:51:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/src/history/createHashHistory.js
@@ -24,7 +24,7 @@ function createHashHistory() {
     }
   }
 
-  window.addEventListener('hashchange', () => {
+  const hashChange = () => {
     let pathname = window.location.hash.slice(1);
     /* 把新的action和pathname赋值给history.action/history.location */
     Object.assign(history, { action, location: { pathname, state } })
@@ -36,7 +36,9 @@ function createHashHistory() {
       historyStack[historyIndex] = history.location;
     }
     listeners.forEach(listener => listener(history.location));
-  })
+  }
+
+  window.addEventListener('hashChange', hashChange);
 
   function push(pathname, nextState) {
     action = 'PUSH';
@@ -88,7 +90,11 @@ function createHashHistory() {
     listen
   }
   action = 'PUSH';
-  window.location.hash = window.location.hash ? window.location.hash.slice(1) : '/';
+  if (window.location.hash) {
+    hashChange();
+  } else {
+    window.location.hash = '/';
+  }
   return history;
 }
 
