@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-28 18:03:17
- * @LastEditTime: 2021-04-04 16:17:56
+ * @LastEditTime: 2021-04-05 02:02:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/src/react-router/Route.js
@@ -17,7 +17,7 @@ class Route extends React.Component {
   static contextType = RouterContext;
   render() {
     const { history, location } = this.context;
-    const { component: RouteComponent, computedMatch, render } = this.props;
+    const { component: RouteComponent, computedMatch, render, children } = this.props;
     const match = computedMatch ? computedMatch : matchPath(location.pathname, this.props);
     let renderElement = null;
     let routeProps = { history, location };
@@ -28,6 +28,8 @@ class Route extends React.Component {
         renderElement = <RouteComponent {...routeProps} />
       } else if (render) {
         renderElement = render(routeProps);
+      } else if (children) {
+        renderElement = children(routeProps);
       }
     }
     return renderElement;
