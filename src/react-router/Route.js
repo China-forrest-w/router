@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-28 18:03:17
- * @LastEditTime: 2021-04-05 02:02:42
+ * @LastEditTime: 2021-04-05 02:04:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/src/react-router/Route.js
@@ -29,6 +29,10 @@ class Route extends React.Component {
       } else if (render) {
         renderElement = render(routeProps);
       } else if (children) {
+        renderElement = children(routeProps);
+      }
+    }else {
+      if(children) {
         renderElement = children(routeProps);
       }
     }
