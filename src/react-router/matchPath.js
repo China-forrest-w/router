@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-04-02 15:13:23
+ * @LastEditTime: 2021-04-04 16:15:44
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /router/src/react-router/matchPath.js
+ */
 
 
 import pathToRegexp from 'path-to-regexp';
@@ -23,6 +31,7 @@ exact 是否精确匹配
 strict 是否严格匹配
 sensitive 是否大小写敏感
 */
+/* 根据路径匹配到match */
 function matchPath(pathname, options = {}) {
     let { path = '/', exact = false, strict = false, sentive = false } = options;
     let { keys, regexp } = compilePath(path, { end: exact, strict, sentive });
