@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-28 14:52:48
- * @LastEditTime: 2021-04-04 16:18:21
+ * @LastEditTime: 2021-04-04 16:32:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/src/index.js
@@ -12,7 +12,7 @@ import { Route, HashRouter, BrowserRouter, Switch, Redirect, Link } from './reac
 import Home from './components/Home';
 import Profile from './components/Profile';
 import User from './components/User';
-// import Login from './components/Login';
+import Login from './components/Login';
 import Protected from './components/Protected';
 
 ReactDOM.render(
@@ -25,7 +25,7 @@ ReactDOM.render(
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/user" component={User} />
-      {/* <Route path="/login" component={Login} /> */}
+      <Route path="/login" component={Login} />
       <Protected path="/profile" component={Profile} />
       <Redirect to="/" />
     </Switch>

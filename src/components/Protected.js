@@ -1,13 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-04-04 15:48:56
- * @LastEditTime: 2021-04-04 15:57:09
+ * @LastEditTime: 2021-04-04 16:32:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/src/components/Protected.js
  */
-import { Redirect } from 'react-router-dom';
-import { Route, Link } from '../react-router-dom';
+import { Route, Link, Redirect } from '../react-router-dom';
 
 const Protected = (props) => {
   /* path:要匹配的路径； RouteComponent: 本来要渲染的组件 */
