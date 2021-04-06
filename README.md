@@ -1,11 +1,12 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-28 14:52:48
- * @LastEditTime: 2021-04-06 17:13:02
- * @LastEditors: your name
+ * @LastEditTime: 2021-04-06 18:42:25
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/README.md
  -->
+本项目主要目的是我快速了解react-router的原理且项目比较小，因此没有使用typescript（这样代码水平不会很高），敬请谅解！
 #
 ### react-router原理分析指南
 - 路由的两种实现方式
