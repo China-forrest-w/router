@@ -1,40 +1,51 @@
 /*
  * @Author: your name
- * @Date: 2021-03-28 14:52:48
- * @LastEditTime: 2021-04-06 11:51:17
+ * @Date: 2021-04-06 14:41:34
+ * @LastEditTime: 2021-04-06 15:04:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/src/index.js
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, HashRouter, BrowserRouter, Switch, Redirect, Link, NavLink } from './react-router-dom';
-import Home from './components/Home';
-import Profile from './components/Profile';
-import User from './components/User';
-import Login from './components/Login';
-import Protected from './components/Protected';
-import NavBar from './components/NavBar';
+import { BrowserRouter, Route, Link, useParams, useLocation, useHistory, useRouteMatch, Switch } from 'react-router-dom';
+
+const Home = () => <div>首页</div>
+
+function UserDetail() {
+  let params = useParams();//路径参数
+  let location = useLocation();//路径对象
+  let history = useHistory();//历史对象
+  console.log('params', params);
+  console.log('location', location);
+  console.log('history', history);
+  return (
+    <div>id:{params.id}; name: {location.state.name}</div>
+  )
+}
+
+function Post() {
+  let match = useRouteMatch({
+    path: '/post/:id',//匹配的路径
+    strict: true,//是否允许出现最后的可选项
+    sensitive: true//大小写是否敏感
+  })
+  return match ? <div>id: {match.params.id}</div> : <div>Not Found</div>
+}
+
 
 ReactDOM.render(
   <BrowserRouter>
-    <NavBar title="点击返回首页"/>
     <ul>
-      <li><NavLink to="/" >首页</NavLink></li>
-      <li><NavLink to="/user">用户管理</NavLink></li>
-      <li><NavLink to="/profile">个人中心</NavLink></li>
+      <li><Link to="/">首页</Link></li>
+      <li><Link to={{ pathname: `/user/detail/1`, state: { id: 1, name: 'tom' } }}>用户详情</Link></li>
+      <li><Link to="/post/1">帖子</Link></li>
     </ul>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/user" component={User} />
-      <Route path="/login" component={Login} />
-      <Protected path="/profile" component={Profile} />
-      <Redirect to="/" />
+      <Route path="/user/detail/:id" component={UserDetail} />
+      <Route path="/post/:id" component={Post} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
-);
-/*
-路由容器：Router
-路由规则：Route
-*/
+)
