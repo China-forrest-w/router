@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-28 14:52:48
- * @LastEditTime: 2021-04-05 04:17:49
+ * @LastEditTime: 2021-04-06 11:51:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/src/index.js
@@ -14,13 +14,15 @@ import Profile from './components/Profile';
 import User from './components/User';
 import Login from './components/Login';
 import Protected from './components/Protected';
+import NavBar from './components/NavBar';
 
 ReactDOM.render(
   <BrowserRouter>
+    <NavBar title="点击返回首页"/>
     <ul>
-    <li><NavLink to="/" >首页</NavLink></li>
-    <li><NavLink to="/user">用户管理</NavLink></li>
-    <li><NavLink to="/profile">个人中心</NavLink></li>
+      <li><NavLink to="/" >首页</NavLink></li>
+      <li><NavLink to="/user">用户管理</NavLink></li>
+      <li><NavLink to="/profile">个人中心</NavLink></li>
     </ul>
     <Switch>
       <Route exact path="/" component={Home} />
