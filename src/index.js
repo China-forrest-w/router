@@ -1,14 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-04-06 14:41:34
- * @LastEditTime: 2021-04-06 15:04:10
+ * @LastEditTime: 2021-04-06 15:45:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/src/index.js
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Link, useParams, useLocation, useHistory, useRouteMatch, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Link, useParams, useLocation, useHistory, useRouteMatch, Switch } from './react-router-dom';
 
 const Home = () => <div>首页</div>
 

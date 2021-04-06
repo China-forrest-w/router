@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-28 18:03:17
- * @LastEditTime: 2021-04-05 02:04:13
+ * @LastEditTime: 2021-04-06 17:01:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/src/react-router/Route.js
@@ -20,20 +20,19 @@ class Route extends React.Component {
     const { component: RouteComponent, computedMatch, render, children } = this.props;
     const match = computedMatch ? computedMatch : matchPath(location.pathname, this.props);
     let renderElement = null;
-    let routeProps = { history, location };
     if (match) {
       //如果一个组件是由Route或者路由组件渲染出来的， 那么RouteProps就是路由属性
-      routeProps.match = match;
+      this.context.match = match;
       if (RouteComponent) {
-        renderElement = <RouteComponent {...routeProps} />
+        renderElement = <RouteComponent {...this.context} />
       } else if (render) {
-        renderElement = render(routeProps);
+        renderElement = render(this.context);
       } else if (children) {
-        renderElement = children(routeProps);
+        renderElement = children(this.context);
       }
     }else {
       if(children) {
-        renderElement = children(routeProps);
+        renderElement = children(this.context);
       }
     }
     return renderElement;

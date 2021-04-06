@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-04-02 15:13:23
- * @LastEditTime: 2021-04-04 16:15:44
- * @LastEditors: your name
+ * @LastEditTime: 2021-04-06 16:51:15
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /router/src/react-router/matchPath.js
  */
@@ -20,7 +20,6 @@ function compilePath(path, options = {}) {
     const regexp = pathToRegexp(path, keys, options);
     let result = { keys, regexp };
     cache[cacheKey] = result;
-    
     return { keys, regexp };
 }
 /* 
