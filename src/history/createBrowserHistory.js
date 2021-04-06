@@ -1,8 +1,17 @@
+/*
+ * @Author: your name
+ * @Date: 2021-03-29 18:13:46
+ * @LastEditTime: 2021-04-06 13:50:18
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /router/src/history/createBrowserHistory.js
+ */
 function createBrowserHistory() {
   const globalHistory = window.history;
   const listeners = [];
   let action;
   let state;
+  let message;
   function go(n) {
     globalHistory.go(n);
   }
@@ -31,6 +40,11 @@ function createBrowserHistory() {
     } else {
       state = nextState;
     }
+    if (message) {
+      let showMessage = message({ pathname });
+      let allow = window.confirm(showMessage);
+      if (!allow) return;
+    }
     globalHistory.pushState(state, null, pathname);
     let location = { state, pathname };
     setState({ action, location })
@@ -41,6 +55,10 @@ function createBrowserHistory() {
     console.log('onPopState');
     setState({ aciton: 'POP', location: { pathname: window.location.pathname, state: globalHistory.state } });
   }
+  function block(newMessage) {
+    message = newMessage;
+    return () => message = null;
+  }
   const history = {
     action: 'POP',
     location: { pathname: window.location.pathname, state: globalHistory.state },
@@ -49,6 +67,7 @@ function createBrowserHistory() {
     goBack,
     push,
     listen,
+    block,
   }
   return history
 }
